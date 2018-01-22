@@ -2,6 +2,7 @@ package com.silvercoffee.gamestates;
 
 import com.artemis.World;
 import com.silvercoffee.ecs.entities.TankFactory;
+import com.silvercoffee.ecs.systems.AimSystem;
 import com.silvercoffee.ecs.systems.MovementSystem;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.TextField;
@@ -39,6 +40,7 @@ public class Game extends BasicGameState {
         msgRecord = new LinkedList<>();
         world = new World();
         world.setSystem(new MovementSystem());
+        world.setSystem(new AimSystem());
         // Set World Systems
         world.initialize();
         world.addEntity(TankFactory.createTank(world));
