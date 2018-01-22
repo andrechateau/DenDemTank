@@ -3,9 +3,11 @@ package com.silvercoffee.gamestates;
 import com.artemis.World;
 import com.silvercoffee.ecs.components.Health;
 import com.silvercoffee.ecs.components.Position;
+import com.silvercoffee.ecs.entities.PlayerEntity;
 import com.silvercoffee.ecs.entities.ShotFactory;
 import com.silvercoffee.ecs.entities.TankFactory;
 import com.silvercoffee.ecs.systems.*;
+import com.silvercoffee.network.GameClient;
 import javafx.geometry.Pos;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.TextField;
@@ -25,6 +27,8 @@ public class Game extends BasicGameState {
     public static HashMap<String, Image> images;
     public static HashMap<Long, Position> tanksPosition = new HashMap<>();
     public static HashMap<Long, Health> tanksHealth = new HashMap<>();
+    public static GameClient client;
+
 
 
     public static World world;
@@ -41,6 +45,7 @@ public class Game extends BasicGameState {
     public static TextField tf;
     public static List<String> msgRecord;
     private static boolean clientConnected = false;
+    public static PlayerEntity player;
 
     public Game() {
         //super("Mundus Profundis");
@@ -55,6 +60,7 @@ public class Game extends BasicGameState {
         world.setSystem(new DeathSystem());
         world.setSystem(new ColisionSystem());
         world.setSystem(new ControllSystem());
+        world.setSystem(new RenderingSystem());
 
         // Set World Systems
         world.initialize();
@@ -86,24 +92,24 @@ public class Game extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.setColor(Color.white);
+        //g.setColor(Color.white);
 
         g.fillRect(0, 0, gc.getWidth(), gc.getHeight());
 
         drawDebugLines(g, 50);
         Game.gc = gc;
         world.process();
-////        if (Game.client == null || !Game.client.isConnected()) {
+//        if (Game.client == null || !Game.client.isConnected()) {
 //            g.setColor(new Color(150, 150, 150, 150));
-//        //g.setColor(Color.white);
+//        g.setColor(Color.white);
 //
 //        g.fillRect(0, 0, gc.getWidth(), gc.getHeight());
-            String msg = "Connecting to server...";
-            int x = gc.getWidth() / 2 - g.getFont().getWidth(msg) / 2;
-            int y = gc.getHeight() / 2 - g.getFont().getHeight(msg) / 2;
-            //g.fillRect(x - 2, y - 2, g.getFont().getWidth(msg) + 4, g.getFont().getHeight(msg) + 4);
-            //g.setColor(Color.white);
-           // g.drawString(msg, x, y);
+//            String msg = "Connecting to server...";
+//            int x = gc.getWidth() / 2 - g.getFont().getWidth(msg) / 2;
+//            int y = gc.getHeight() / 2 - g.getFont().getHeight(msg) / 2;
+//            g.fillRect(x - 2, y - 2, g.getFont().getWidth(msg) + 4, g.getFont().getHeight(msg) + 4);
+//            g.setColor(Color.white);
+//            g.drawString(msg, x, y);
 //        }
 //        g.setColor(Color.white);
 //
@@ -114,8 +120,14 @@ public class Game extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
             world.setDelta((delta / 1000.0f));
-            //Game.client.clientUpdate(player.getPlayer());
-
+//        if (!clientConnected) {
+//            clientConnected = true;
+//            Game.client = new GameClient("Player");
+//        } else {
+//            world.setDelta((delta / 1000.0f));
+//            Game.client.clientUpdate(player.getPlayer());
+//
+//        }
 
     }
 
@@ -149,7 +161,7 @@ public class Game extends BasicGameState {
             }else{
                 System.exit(0);
             }
-            images.put("res/troll.png", new Image("res/troll.png"));
+            images.put("res/arma_vermelha.png", new Image("res/arma_vermelha.png"));
 
         } catch (SlickException ex) {
             Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);

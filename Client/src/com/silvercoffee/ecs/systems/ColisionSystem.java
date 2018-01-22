@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class ColisionSystem extends EntityProcessingSystem {
 
-    private static final double MIN_DIST = 10;
+    private static final double MIN_DIST = 25;
     @Mapper
     ComponentMapper<Position> ps;
     @Mapper
