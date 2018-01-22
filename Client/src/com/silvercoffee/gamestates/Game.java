@@ -5,12 +5,9 @@ import com.silvercoffee.ecs.components.Health;
 import com.silvercoffee.ecs.components.Position;
 import com.silvercoffee.ecs.entities.ShotFactory;
 import com.silvercoffee.ecs.entities.TankFactory;
-<<<<<<< HEAD
 import com.silvercoffee.ecs.systems.AimSystem;
-=======
 import com.silvercoffee.ecs.systems.ColisionSystem;
 import com.silvercoffee.ecs.systems.DeathSystem;
->>>>>>> 5b657f84b16f66e2c250cb47aa7b0750645603c7
 import com.silvercoffee.ecs.systems.MovementSystem;
 import javafx.geometry.Pos;
 import org.newdawn.slick.*;
@@ -55,13 +52,10 @@ public class Game extends BasicGameState {
         msgRecord = new LinkedList<>();
         world = new World();
         world.setSystem(new MovementSystem());
-<<<<<<< HEAD
         world.setSystem(new AimSystem());
-=======
         world.setSystem(new DeathSystem());
         world.setSystem(new ColisionSystem());
 
->>>>>>> 5b657f84b16f66e2c250cb47aa7b0750645603c7
         // Set World Systems
         world.initialize();
         world.addEntity(TankFactory.createTank(world, 50, 50));
