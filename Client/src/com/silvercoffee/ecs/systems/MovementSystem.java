@@ -31,7 +31,12 @@ public class MovementSystem extends EntityProcessingSystem {
         //Alterar para considerar o Delta
         position.setX(position.getX()+((int)velocity.getX()));
         position.setY(position.getY()+((int)velocity.getY()));
+<<<<<<< HEAD
+
+        Game.gc.getGraphics().fillRect(position.getX()-5,position.getY()-5,position.getX()+5,position.getY()+5);
+=======
         Game.gc.getGraphics().fillRect(position.getX()-5,position.getY()-5,10,10);
+>>>>>>> 5b657f84b16f66e2c250cb47aa7b0750645603c7
     }
 
 }
