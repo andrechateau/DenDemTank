@@ -46,6 +46,7 @@ public class ColisionSystem extends EntityProcessingSystem {
             long tankId = entry.getKey();
             if(isColided(tankPosition, shotPosition)){
                 decreaseTankHealth(Game.tanksHealth.get(tankId), shotDamage);
+                e.deleteFromWorld();
             }
         }
     }
