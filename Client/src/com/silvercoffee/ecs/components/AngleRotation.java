@@ -18,6 +18,9 @@ public class AngleRotation extends Component {
     }
 
     public void setAngle(float angle) {
+        if(angle<0){
+            angle = 360+angle;
+        }
         this.angle = angle%360;
     }
 }

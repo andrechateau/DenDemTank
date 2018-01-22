@@ -15,7 +15,10 @@ public class Util {
     }
 
     public static Point polToRec(double angle, double amplitude) {
-        return new Point((float) (Math.cos(angle) * amplitude), (float) (Math.sin(angle) * amplitude)   );
+        return new Point((float) (Math.cos(Math.toRadians(angle)) * amplitude), (float) (Math.sin(Math.toRadians(angle)) * amplitude)   );
     }
 
+    public static void main(String[] args) {
+        System.out.println(polToRec(90,1).getX()+" "+polToRec(45,1).getY());
+    }
 }
