@@ -1,0 +1,30 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Client/lib/kryo-2.23.1-SNAPSHOT-all-debug.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/natives-mac.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/kryonet-2.22.0-RC1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/lwjgl_util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/ibxm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/natives-windows.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/jsonbeans-0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/artemis-odb-0.6.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/artemis-odb-2.1.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/kryonet-2.22.0-RC1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/artemis-odb-2.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/slick.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/natives-linux.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/slick-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/kryonet-2.22.0-RC1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/mysql-connector-java-5.1.42-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/artemis-odb-0.6.5-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/jinput.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Client/lib/jnlp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

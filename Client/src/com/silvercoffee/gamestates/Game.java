@@ -1,9 +1,18 @@
 package com.silvercoffee.gamestates;
 
 import com.artemis.World;
+import com.silvercoffee.ecs.components.Health;
+import com.silvercoffee.ecs.components.Position;
+import com.silvercoffee.ecs.entities.ShotFactory;
 import com.silvercoffee.ecs.entities.TankFactory;
+<<<<<<< HEAD
 import com.silvercoffee.ecs.systems.AimSystem;
+=======
+import com.silvercoffee.ecs.systems.ColisionSystem;
+import com.silvercoffee.ecs.systems.DeathSystem;
+>>>>>>> 5b657f84b16f66e2c250cb47aa7b0750645603c7
 import com.silvercoffee.ecs.systems.MovementSystem;
+import javafx.geometry.Pos;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
@@ -15,7 +24,13 @@ import java.util.List;
 
 public class Game extends BasicGameState {
 
+    public static final int MAP_WIDTH = 800;
+    public static final int MAP_HEIGTH = 600;
     public static HashMap<String, Image> images;
+    public static HashMap<Long, Position> tanksPosition = new HashMap<>();
+    public static HashMap<Long, Health> tanksHealth = new HashMap<>();
+
+
     public static World world;
     /**
      * The ID given to this state
@@ -40,13 +55,21 @@ public class Game extends BasicGameState {
         msgRecord = new LinkedList<>();
         world = new World();
         world.setSystem(new MovementSystem());
+<<<<<<< HEAD
         world.setSystem(new AimSystem());
+=======
+        world.setSystem(new DeathSystem());
+        world.setSystem(new ColisionSystem());
+
+>>>>>>> 5b657f84b16f66e2c250cb47aa7b0750645603c7
         // Set World Systems
         world.initialize();
-        world.addEntity(TankFactory.createTank(world));
+        world.addEntity(TankFactory.createTank(world, 50, 50));
+        world.addEntity(TankFactory.createTank(world, 200, 200));
+        world.addEntity(ShotFactory.createShot(world, 400, 400));
 
         loadImages();
-        Font font = new AngelCodeFont("res/small_font.fnt", "res/small_font_0.tga");
+//        Font font = new AngelCodeFont("res/small_font.fnt", "res/small_font_0.tga");
 //        tf = new TextField(gc, font, 5, gc.getHeight() - 25, 300, 20, new ComponentListener() {
 //            public void componentActivated(AbstractComponent source) {
 //                Game.client.sendChat(tf.getText());
@@ -140,6 +163,11 @@ public class Game extends BasicGameState {
                 tf.setFocus(false);
             }
         }
+    }
+
+    public static void addTank(long id, Position pos, Health health){
+        tanksPosition.put(id, pos);
+        tanksHealth.put(id, health);
     }
 
 }
