@@ -12,6 +12,7 @@ public class main {
             AppGameContainer app = new AppGameContainer(new ScalableGame(new StateManager(), 800, 600));
             app.setDisplayMode(800, 600, false);
             app.setTitle("dendemtank");
+            app.setShowFPS(false);
             //app.setIcon("res/icons/32x32.tga");
             app.setAlwaysRender(true);
 //            if (app instanceof AppGameContainer) {
