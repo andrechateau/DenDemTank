@@ -13,7 +13,7 @@ package com.silvercoffee.network;
 public class PositionServer {
 
     private Server server;
-    private HashSet<Network.Player> loggedIn = new HashSet();
+    private HashSet<Player> loggedIn = new HashSet();
     private ServerListener listener;
 
     public PositionServer(ServerListener listener) throws IOException {
@@ -30,7 +30,7 @@ public class PositionServer {
             public void received(Connection c, Object object) {
                 // We know all connections for this server are actually CharacterConnections.
                 CharacterConnection connection = (CharacterConnection) c;
-                Network.Player character = connection.character;
+                Player character = connection.character;
 
                 if (object instanceof Login) {
                     // Ignore if already logged in.
@@ -46,12 +46,12 @@ public class PositionServer {
                     }
 
                     // Reject if already logged in.
-                    for (Player other : getLoggedIn()) {
-                        if (other.getName().equals(name)) {
-                            c.close();
-                            return;
-                        }
-                    }
+//                    for (Player other : getLoggedIn()) {
+//                        if (other.getName().equals(name)) {
+//                            c.close();
+//                            return;
+//                        }
+//                    }
 
                     character = loadCharacter(name);
 
@@ -62,36 +62,6 @@ public class PositionServer {
                     }
 
                     loggedIn(connection, character);
-                    return;
-                }
-
-                if (object instanceof MoveCharacter) {
-                    // Ignore if not logged in.
-                    if (character == null) {
-                        return;
-                    }
-
-                    MoveCharacter msg = (MoveCharacter) object;
-                    character.setX(msg.x);
-                    character.setY(msg.y);
-                    character.setDesiredX(msg.desiredX);
-                    character.setDesiredY(msg.desiredY);
-                    character.setDirection(msg.direction);
-                    //character.setHP(msg.hp);
-                    if (!saveCharacter(character)) {
-                        connection.close();
-                        return;
-                    }
-
-                    UpdateCharacter update = new UpdateCharacter();
-                    update.id = character.getId();
-                    update.x = character.getX();
-                    update.y = character.getY();
-                    update.desiredX = character.getDesiredX();
-                    update.desiredY = character.getDesiredY();
-                    update.direction = character.getDirection();
-                    update.hp = character.getHP();
-                    server.sendToAllTCP(update);
                     return;
                 }
 
@@ -114,8 +84,8 @@ public class PositionServer {
                     saveCharacter(connection.character);
                     getLoggedIn().remove(connection.character);
                     listener.changedLoggedUsers(getLoggedIn());
-                    RemoveCharacter removeCharacter = new RemoveCharacter();
-                    removeCharacter.id = connection.character.getId();
+                    RemovePlayer removeCharacter = new RemovePlayer();
+                    removeCharacter.id = connection.character.id;
                     server.sendToAllTCP(removeCharacter);
                 }
             }
@@ -129,7 +99,7 @@ public class PositionServer {
 
         // Add existing characters to new logged in connection.
         for (Player other : getLoggedIn()) {
-            AddCharacter addCharacter = new AddCharacter();
+            AddPlayer addCharacter = new AddPlayer();
             addCharacter.character = other;
             c.sendTCP(addCharacter);
         }
@@ -150,7 +120,7 @@ public class PositionServer {
         listener.changedLoggedUsers(getLoggedIn());
 
         // Add logged in character to all connections.
-        AddCharacter addCharacter = new AddCharacter();
+        AddPlayer addCharacter = new AddPlayer();
         addCharacter.character = character;
         server.sendToAllTCP(addCharacter);
     }
@@ -230,12 +200,12 @@ public class PositionServer {
 //    }
 
     public void sendHit(int x, int y, String number) {
-        HitEffect msg = new HitEffect();
-        msg.x = x;
-        msg.y = y;
-        msg.number = number;
-        msg.sprite = "hit";
-        server.sendToAllTCP(msg);
+//        HitEffect msg = new HitEffect();
+//        msg.x = x;
+//        msg.y = y;
+//        msg.number = number;
+//        msg.sprite = "hit";
+//        server.sendToAllTCP(msg);
     }
 
 
