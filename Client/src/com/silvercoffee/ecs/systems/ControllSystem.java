@@ -26,10 +26,10 @@ public class ControllSystem extends EntityProcessingSystem {
         AngleRotation angle = ag.get(entity);
 
         if (Game.gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-            angle.setAngle(angle.getAngle() + 15);
+            angle.setAngle(angle.getAngle() + 5);
         }
         if (Game.gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-            angle.setAngle(angle.getAngle() - 15);
+            angle.setAngle(angle.getAngle() - 5);
         }
 
         Position pos = ps.get(entity);
