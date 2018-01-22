@@ -24,9 +24,6 @@
           <root url="jar://$MODULE_DIR$/lib/lwjgl.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/lwjgl_util.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-5.1.42-bin.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/natives-linux.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/natives-mac.jar!/" />
-          <root url="jar://$MODULE_DIR$/lib/natives-windows.jar!/" />
           <root url="jar://$MODULE_DIR$/lib/slick.jar!/" />
         </CLASSES>
         <JAVADOC>
